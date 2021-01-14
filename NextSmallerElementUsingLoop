@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void NSE(vector<int>arr , int n)
+{
+    int next = -1 , i , j;
+    
+    for(int i=0; i <n ; i++)
+    {
+        next = -1;
+        for(int j=i+1 ; j<n ; j++)
+        {
+            if(arr[i] > arr[j])
+            {
+                next = arr[j];
+                break;
+            }
+        }
+        cout<<arr[i]<<"->"<<next<<endl;
+    }
+}
+
+int main()
+{
+    int n; cin>>n;
+    vector<int>arr(n);
+    for(int i=0; i <n ; i++)    cin>>arr[i];
+
+    NSE(arr , n);
+    return 0;
+}
