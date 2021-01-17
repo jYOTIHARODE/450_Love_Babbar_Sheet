@@ -1,0 +1,13 @@
+class Solution{
+public:	
+	
+	
+	int isPlaindrome(string S)
+	{
+	    string s =S;
+	    reverse(S.begin() , S.end());
+	    if(s == S)  return 1;
+	    else    return 0;
+	}
+
+};
