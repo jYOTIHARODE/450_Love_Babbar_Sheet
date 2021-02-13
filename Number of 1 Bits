@@ -1,0 +1,9 @@
+class Solution
+{
+public:
+    int setBits(int N)
+    {
+        int ans = __builtin_popcount(N);
+        return ans;
+    }
+};
