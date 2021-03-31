@@ -4,11 +4,12 @@ class Solution
     int kthSmallest(int arr[], int l, int r, int k) 
     {
         priority_queue<int>q;
-    
-        for(int i=l ; i<=r; i++)
+        int count=0;
+        for(int i=l;i<=r;i++)
         {
             q.push(arr[i]);
-            if(q.size()>k)
+            count++;
+            if(count>k)
             {
                 q.pop();
             }
