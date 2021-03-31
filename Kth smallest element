@@ -1,0 +1,18 @@
+class Solution
+{
+    public:
+    int kthSmallest(int arr[], int l, int r, int k) 
+    {
+        priority_queue<int>q;
+    
+        for(int i=l ; i<=r; i++)
+        {
+            q.push(arr[i]);
+            if(q.size()>k)
+            {
+                q.pop();
+            }
+        }
+        return q.top();
+    }
+};
