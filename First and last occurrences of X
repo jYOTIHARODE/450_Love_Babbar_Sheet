@@ -1,0 +1,43 @@
+vector<int> find(int arr[], int n , int x )
+{
+    int index1 = 0;
+    for(int i=0 ; i<n ; i++)
+    {
+        if(arr[i]==x)   
+        {
+            index1 = i;
+            break;
+        }
+    }
+    
+    int index2 = 0;
+    for(int i=n-1 ; i>=0 ; i--)
+    {
+        if(arr[i]==x)
+        {
+            index2 = i;
+            break;
+        }
+    }
+    
+    vector<int>ans;
+    int count=0;
+    for(int i=0 ; i<n ; i++)
+    {
+        if(arr[i]!=x)
+        {
+            count++;
+        }
+    }
+    if(count==n)
+    {
+        ans.push_back(-1);
+        ans.push_back(-1);
+    }
+    else
+    {
+    ans.push_back(index1);
+    ans.push_back(index2);
+    }
+    return ans;
+}
