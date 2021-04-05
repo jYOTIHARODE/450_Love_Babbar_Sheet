@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int solve(string s)
+{
+    int count0=0;
+    int count1=0;
+    int count=0;
+    int n = s.size();
+
+    for(int i=0 ; i<n ; i++)
+    {
+        if(s[i]=='0')   count0++;
+        else    count1++;
+
+        if(count0==count1)  count++;
+    }
+        if(count1!=count0)  return -1;
+        return count;
+}
+
+int main()
+{
+    string s = "0100110101";
+    cout<<solve(s)<<endl;
+    return 0;
+}
+
+//Time Complexity - O(n)
+//Space Complexity - O(1)
