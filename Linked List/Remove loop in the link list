@@ -1,0 +1,23 @@
+#include<unordered_set>
+class Solution
+{
+    public:
+    //Function to remove a loop in the linked list.
+     void removeLoop(Node* head)
+    {
+        unordered_set<Node *> S;
+        S.insert(head);
+        Node *curr = head->next, *prev = head;
+        while(curr) 
+        {
+            if(!S.count(curr)) S.insert(curr);
+            else 
+            {
+                prev->next = NULL;
+                return;
+            }
+            curr = curr->next;
+            prev = prev->next;
+        }
+    }
+};
