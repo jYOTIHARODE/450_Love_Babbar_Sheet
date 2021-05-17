@@ -1,0 +1,29 @@
+// Method 1: Naive Recursive Approach.   -  O(N^2) 
+#include <bits/stdc++.h>
+using namespace std;
+
+int minJumps(int arr[], int n)
+{
+	if(n == 1)
+		return 0;
+	int ans = INT_MAX;
+	for(int i = n-2 ; i>=0 ; i--) 
+    {
+		if(i+arr[i] >= n-1) 
+        {
+			int res = minJumps(arr, i + 1);
+			if (res != INT_MAX)
+				ans = min(ans,res + 1);
+		}
+	}
+	return res;
+}
+
+int main()
+{
+	int arr[] = { 1, 3, 6, 3, 2, 3, 6, 8, 9, 5 };
+	int n = sizeof(arr) / sizeof(arr[0]);
+	cout << "Minimum number of jumps to";
+	cout << " reach the end is " << minJumps(arr, n)<<endl;
+	return 0;
+}
