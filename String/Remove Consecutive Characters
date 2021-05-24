@@ -1,0 +1,18 @@
+class Solution{
+    public:
+    string removeConsecutiveCharacter(string S)
+    {
+        string ans;
+        char curr = S[0];
+        ans+=curr;
+        for(int i=1 ; i<S.size() ; i++)
+        {
+            if(curr!=S[i])
+            {
+                ans+=S[i];
+                curr=S[i];
+            }
+        }
+        return ans;
+    }
+};
