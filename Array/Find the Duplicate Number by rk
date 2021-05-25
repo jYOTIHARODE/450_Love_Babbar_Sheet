@@ -1,0 +1,14 @@
+int findDuplicate(vector<int>& nums) {
+      int r1=nums[0];int r2=nums[0];
+        do{
+            r1=nums[r1];
+            r2=nums[nums[r2]];
+        }while(r1!=r2);
+        r1=nums[0];
+        while(r1!=r2)
+        {
+            r1=nums[r1];
+            r2=nums[r2];
+        }
+        return r2;
+    }
