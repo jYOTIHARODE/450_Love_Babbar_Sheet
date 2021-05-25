@@ -1,0 +1,27 @@
+	void merge(int arr1[], int arr2[], int n, int m) {
+	    // code here
+	        int i=0,j=0,temp=0,k=n-1;
+    while(i<=k)
+    {
+       
+      if(arr1[i]>=arr2[j])
+      {
+          temp=arr2[j];
+          arr2[j]=arr1[k];
+          arr1[k]=temp;
+          k--;j++;
+      }
+      else if(arr1[i]<arr2[j])
+      {
+          i++;
+      }
+      if(j==m)
+      {
+          break;
+      }
+        
+        
+    }
+    sort(arr1,arr1+n);
+    sort(arr2,arr2+m);
+	}
