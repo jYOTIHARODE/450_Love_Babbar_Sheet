@@ -1,0 +1,21 @@
+ 
+    public static void sort012(int a[], int n)
+    {
+        // code here 
+        int mid=0,i=0,j=n-1;
+        while(mid<=j){
+            if(a[mid]==0){
+                int temp=a[mid];
+                a[mid]=a[i];
+                a[i]=temp;
+                
+                
+                i++;mid++; 
+            }else if(a[mid]==1){mid++;}else
+            {
+               int temp=a[mid];
+                a[mid]=a[j];
+                a[j]=temp;j--; 
+            }
+        }
+    }
