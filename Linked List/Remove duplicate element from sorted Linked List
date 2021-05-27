@@ -1,20 +1,19 @@
 Node *removeDuplicates(Node *root)
-{    if(root==NULL||root->next==NULL)return root;
-     Node *cur=root,*prev=NULL,*next=NULL;
-     
-     while(cur->next!=NULL&&cur!=NULL)
+{    if(root==NULL||root->next==NULL)
+        return root;
+     Node *curr=root,*prev=NULL,*next=NULL;
+     while(curr->next  && curr)
      {
-         next=cur->next;
-        while(cur->data==next->data&&(cur->next!=NULL&&cur!=NULL))
+         next=curr->next;
+        while(curr->data == next->data && (curr->next &&curr))
         {
-            cur->next=next->next;
-            if(cur!=NULL)
-            next=cur->next;
-            if(cur->next==NULL)return root;
-            
+            curr->next = next->next;
+            if(curr)
+                next=curr->next;
+            if(!curr->next) 
+                return root;
         }
-    
-         if(cur!=NULL)
-         cur=cur->next;
-     }return root;
+        if(curr)   curr = curr->next;
+     }
+     return root;
 }
