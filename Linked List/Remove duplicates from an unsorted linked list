@@ -1,21 +1,24 @@
-public:
-    Node * removeDuplicates( Node *head) 
+Node * removeDuplicates( Node *head) 
     {
-    if(head==NULL||head->next==NULL)return head;
-     Node *cur=head,*prev=NULL,*next=NULL;
-     set<int>s;
-     while(cur!=NULL)
-     {
-         
-         if(s.count(cur->data)>0&&cur!=NULL)
-         {
-            prev->next=cur->next;
-            cur=prev->next;
-             
-         }else{
-             s.insert(cur->data);prev=cur;
-             cur=cur->next;
-         }
-     }
-     return head;
+        if(!head || !head->next)    return head;
+        Node* curr = head;
+        Node* prev = nullptr;
+        Node* next = nullptr;
+        
+        set<int>s;
+        while(curr)
+        {
+            if(curr && s.count(curr->data)>0)
+            {
+                prev->next = curr->next;
+                curr = prev->next;
+            }
+            else
+            {
+                s.insert(curr->data);
+                prev = curr;
+                curr = curr->next;
+            }
+        }
+        return head;
     }
