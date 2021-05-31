@@ -1,0 +1,19 @@
+class Solution
+{
+    public:
+    void isBSTUtil(Node* root,int l ,int r,bool &ans)
+    {
+        if(!ans || !root)   return;
+        if(root->data < l || root->data >r)  ans = 0;
+        isBSTUtil(root->left , l , root->data-1 , ans);
+        isBSTUtil(root->right , root->data+1 , r,ans);
+    }
+   
+    //Function to check whether a Binary Tree is BST or not.
+    bool isBST(Node* root) 
+    {
+        bool ans = 1;
+        isBSTUtil(root , INT_MIN,INT_MAX,ans);
+        return ans;
+    }
+};
