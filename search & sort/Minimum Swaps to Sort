@@ -1,0 +1,21 @@
+int minSwaps(vector<int>&nums)
+	{
+	   vector<pair<int,int>>arr(nums.size());
+	   for(int i=0 ; i<nums.size() ; i++)
+	   {
+	       arr[i] = {nums.at(i),i};
+	   }
+	   int c=0;
+	   sort(arr.begin() , arr.end());
+	   for(int i=0 ; i<nums.size() ; i++)
+	   {
+	       if(arr[i].second == i)   continue;
+	       else
+	       {
+	           c++;
+	           swap(arr[i],arr[arr[i].second]);
+	           i--;
+	       }
+	   }
+	   return c;
+	}
