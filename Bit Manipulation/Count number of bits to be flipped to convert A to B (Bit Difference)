@@ -1,0 +1,19 @@
+class Solution{
+    public:
+    int count(int n)
+    {
+        int c=0;
+        while(n>0)
+        {
+            c++;
+            n&=(n-1);
+        }
+        return c;
+    }
+    // Function to find number of bits needed to be flipped to convert A to B
+    int countBitsFlip(int a, int b){
+        
+       return count(a^b);
+        
+    }
+};
