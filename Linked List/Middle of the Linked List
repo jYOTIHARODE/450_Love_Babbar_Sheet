@@ -12,8 +12,6 @@ public:
             fast = fast->next->next;
         }
         
-        if(prev)
-            prev->next = nullptr;
         return slow;
     }
 };
