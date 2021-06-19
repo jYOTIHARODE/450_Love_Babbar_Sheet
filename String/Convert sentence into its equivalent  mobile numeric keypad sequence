@@ -1,0 +1,52 @@
+// 1      ABC   DEF
+//         2     3
+
+// GHI    JKL   MNO
+//  4      5     6
+
+// PQRS   TUV   WXYZ
+//   7     8      9
+
+// *       0      #
+
+// Input : JYOTI
+// Output : 59996668444
+
+// For obtaining a number, we need to press a number corresponding to that character for number of times equal to 
+// position of the  character. For example, for character I, we press number 4 three times and accordingly.
+// Time complexity : O(n)
+
+#include<bits/stdc++.h>
+using namespace std;
+
+string print(string arr[] ,string input)
+{
+    int n = input.size();
+    string output = "";
+    for(int i=0 ; i<n ; i++)
+    {
+        if(input[i]==' ')
+            output += "0";
+        else
+        {
+            int position = input[i]-'A';
+            output = output+arr[position];
+        }
+    }
+    return output;
+}
+
+int main()
+{
+    string str[] = {"2" , "22" , "222",
+                    "3" , "33" , "333",
+                    "4" , "44" , "444",
+                    "5" , "55" , "555",
+                    "6" , "66" , "666",
+                    "7" , "77" , "777", "7777"
+                    "8" , "88" , "888",
+                    "9" , "99" , "999", "9999"};
+    string input = "HELLO";
+    cout<<print(str,input)<<endl;
+    return 0;
+}
