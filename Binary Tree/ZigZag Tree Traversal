@@ -1,0 +1,27 @@
+vector <int> zigZagTraversal(Node* root)
+{
+    if(!root)   return {};
+    vector<int>ans;
+    queue<Node*>Q;
+    Q.push(root);
+    
+    int count = 1;
+    while(!Q.empty())
+    {
+        vector<int>temp;
+        int n = Q.size();
+        
+        while(n--)
+        {
+            Node* t = Q.front();
+            temp.push_back(t->data);
+            Q.pop();
+            if(t->left)     Q.push(t->left);
+            if(t->right)    Q.push(t->right);
+        }
+        if(count%2==0)  reverse(temp.begin(),temp.end());
+        for(int i=0 ; i<temp.size() ; i++)  ans.push_back(temp[i]);
+        count = !count;
+    }
+    return ans;
+}
