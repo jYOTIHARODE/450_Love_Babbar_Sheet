@@ -1,0 +1,26 @@
+class Solution
+{
+    public:
+    vector<int> topView(Node *root)
+    {
+        map<int,vector<int>>M;
+        queue<pair<Node*,int>>Q;
+        Q.push({root,0});
+        vector<int>ans;
+        while(!Q.empty())
+        {
+            Node* curr = Q.front().first;
+            int dist = Q.front.second;
+            Q.pop();
+            M[dist].push_back(curr->data);
+            if(curr->left)  Q.push({curr->left,dist-1});
+            if(curr->right)  Q.push({curr->right,dist+1});
+            
+        }
+        if(auto m:M)
+        {
+            ans.push_back(m.second[0]);
+        }
+        return ans;
+    }
+};
