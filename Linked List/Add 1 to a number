@@ -1,0 +1,49 @@
+class Solution
+{
+    public:
+    Node* util(Node* head)
+    {
+        Node* temp;
+        temp = head;
+        if(temp->data<9)
+            temp->data = temp->data+1;
+        else
+        {
+            temp->data = temp->data+1;
+            while(temp->next!=nullptr)
+            {
+                if(temp->data == 10)
+                {
+                    temp->data = 0;
+                    temp->next->data = temp->next->data+1;
+                    temp = temp->next;
+                }
+                else    break;
+            }
+        }
+        return head;
+    }
+    Node* reverse(Node* head)
+    {
+        Node*curr = head;
+        Node*prev = nullptr;
+        Node*next = nullptr;
+        
+        while(curr)
+        {
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr=next;
+        }
+        return prev;
+    }
+    Node* addOne(Node *head) 
+    {
+        head = reverse(head);
+        head = util(head);
+        head = reverse(head);
+        
+        return head;
+    }
+};
