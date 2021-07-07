@@ -1,0 +1,19 @@
+class Solution
+{
+    public:
+    int ans = -1;
+    void inorder(Node* root , int *k)
+    {
+        if(!root)   return ;
+        inorder(root->right,k);
+        *k = *k-1;
+        if(*k==0)   ans=(root->data);
+        inorder(root->left,k);
+    }
+    int kthLargest(Node *root, int K)
+    {
+        ans = -1;
+        inorder(root,&K);
+        return ans;
+    }
+};
