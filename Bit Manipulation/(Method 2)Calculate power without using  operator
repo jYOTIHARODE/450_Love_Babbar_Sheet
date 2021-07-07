@@ -1,4 +1,4 @@
-
+//Time complexity - O(log N)
 // We can do it in O(Logn) time using bitwise operators
 // If n is even, it can be written as
 //   n = 2*x 
