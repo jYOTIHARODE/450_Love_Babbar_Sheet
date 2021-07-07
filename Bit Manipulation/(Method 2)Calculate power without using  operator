@@ -1,0 +1,33 @@
+
+// We can do it in O(Logn) time using bitwise operators
+// If n is even, it can be written as
+//   n = 2*x 
+//   n2 = (2*x)2 = 4*x2
+// If n is odd, it can be written as 
+//   n = 2*x + 1
+//   n2 = (2*x + 1)2 = 4*x2 + 4*x + 1
+// floor(n/2) can be calculated using a bitwise right shift operator. 2*x and 4*x can be calculated
+// Square of a number using bitwise operators
+#include <bits/stdc++.h>
+using namespace std;
+
+int square(int n)
+{
+	if (n == 0) return 0;
+	if (n < 0)// Handle negative number
+		n = -n;
+
+	int x = n >> 1;// Get floor(n/2) using right shift
+
+	if (n & 1)// If n is odd
+		return ((square(x) << 2) + (x << 2) + 1);
+	else // If n is even
+		return (square(x) << 2);
+}
+
+int main()
+{
+	for (int n = 1; n <= 5; n++)
+		cout << "n = " << n << ", n^2 = " << square(n)<< endl;
+	return 0;
+}
