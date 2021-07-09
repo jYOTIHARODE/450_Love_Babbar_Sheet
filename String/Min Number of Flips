@@ -1,0 +1,21 @@
+char flip(char ch)
+{
+    return (ch=='0')?'1':'0';
+}
+
+int GFWSC(string s,char expected)
+{
+    int count=0;
+    for(int i=0 ; i<s.size() ; i++)
+    {
+        if(s[i]!=expected)
+            count++;
+        expected = flip(expected);
+    }
+    return count;
+}
+
+int minFlips (string S)
+{
+    return min(GFWSC(S,'0'),GFWSC(S,'1')); 
+}
