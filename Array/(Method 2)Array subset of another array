@@ -1,0 +1,13 @@
+string isSubset(int a1[], int a2[], int n, int m) 
+{
+    unordered_map<int,int>mp;
+    for(int i=0 ; i<n ; i++)
+        mp[a1[i]]++;
+    
+    int c=0;
+    for(int i=0 ; i<m; i++)
+        if(mp[a2[i]]) 
+            c++;
+    if(c!=m)    return "No";
+    return "Yes";
+}
