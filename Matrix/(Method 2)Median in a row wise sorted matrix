@@ -1,0 +1,28 @@
+class Solution{   
+public:
+int canWe(vector<int> &a, int mid, int c) 
+{
+    int s = upper_bound(a.begin(), a.end(), mid) - a.begin();
+    return s;
+}
+int median(vector<vector<int>> &matrix, int r, int c) 
+{
+    int s = 0;
+    int e = 1e9;
+    int ans = 0;
+    while (s <= e) 
+    {
+        int mid = (s + e) / 2;
+        int cnt = 0;
+        for (int i = 0; i < r; i++) 
+        {
+            cnt += canWe(matrix[i], mid, c);
+        }
+        if (cnt <= (r * c) / 2 )
+            s = mid + 1;
+        else
+            e = mid - 1;    
+    }
+    return s;
+    }
+};
