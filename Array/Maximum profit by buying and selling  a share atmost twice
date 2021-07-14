@@ -1,0 +1,58 @@
+// Input:   price[] = {10, 22, 5, 75, 65, 80}
+// Output:  87
+// Trader earns 87 as sum of 12, 75 
+// Buy at 10, sell at 22, 
+// Buy at 5 and sell at 80
+
+// Input:   price[] = {90, 80, 70, 60, 50}
+// Output:  0
+// Not possible to earn.
+
+//METHOD 1 - O(N^2) 
+// The maximum difference between two elements such that the larger element
+//  appears after the smaller number
+// The time complexity of the above simple solution is O(n2).
+
+//METHOD 2 - O(N)
+// 1)Create a table profit[0..n-1] and initialize all values in it 0.
+// 2)Traverse price[] from right to left and update profit[i] 
+//such that profit[i] stores maximum profit achievable from one transaction
+// 3)Traverse price[] from left to right and update profit[i] 
+//such that profit[i] stores maximum profit such that profit[i] contains
+//  maximum achievable profit from two transactions.
+//4) Return profit[n-1]
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int maxProfit(int price[] , int n)
+{
+    int *profit= new int[n];
+    for(int i=0 ; i<n ; i++)    profit[i] = 0;
+    int max_price = price[n-1];
+    for(int i=n-2 ; i>=0 ; i--)
+    {
+        if(price[i]>max_price)  
+            max_price = price[i];
+        profit[i] = max(profit[i+1],max_price - price[i]);
+    }
+
+    int min_price = price[0];
+    for(int i=1 ; i<n ; i++)
+    {
+        if(price[i]<min_price)
+            min_price = price[i];
+        profit[i] = max(profit[i-1],profit[i]+(price[i]-min_price));
+    }
+    int result = profit[n-1];
+    delete[] profit;
+    return result;
+}
+
+int main()
+{
+    int price[] = {2,30,15,10,8,25,80};
+    int n = sizeof(price)/sizeof(price[0]);
+    cout<<maxProfit(price,n);
+    return 0;
+}
