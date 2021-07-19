@@ -1,0 +1,15 @@
+void helper(queue<int>&q)
+{
+    if(q.size()<=1) return;
+    auto p = q.front();
+    q.pop();
+    helper(q);
+    q.push(p);
+    return;
+        
+}
+queue<int> rev(queue<int> q)
+{
+  helper(q);
+    return q;
+}
